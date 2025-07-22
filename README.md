@@ -48,6 +48,14 @@ The server will start on `http://localhost:8000`
   ```json
   { "detail": ["Field 'b' is required"] }
   ```
+- **Invalid Payload Example:**
+  ```json
+  { "a": 0, }
+  ```
+  **Response:**
+  ```json
+  { "detail": ["Invalid request payload please check request body"] }
+  ```
 
 ### 2. Subtract Numbers
 - **Endpoint:** `POST /subtract_numbers`
@@ -76,7 +84,7 @@ The server will start on `http://localhost:8000`
   ```
   **Response:**
   ```json
-  { "detail": ["Field 's1' is invalid"] }
+  { "detail": ["Invalid request payload please check request body"] }
   ```
 
 ### 4. Remove Substring
@@ -96,4 +104,3 @@ Visit [http://localhost:8000/docs](http://localhost:8000/docs) for Swagger UI do
 
 ## Notes
 - All endpoints expect JSON payloads.
-- Validation errors return HTTP 422 with a clear error message about missing or invalid fields.
