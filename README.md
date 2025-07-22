@@ -16,7 +16,12 @@ Option 1 - Direct Python:
 python app.py
 ```
 
-Option 2 - Uvicorn command:
+Option 2 - Python module:
+```bash
+python -m uvicorn app:app --reload
+```
+
+Option 3 - Uvicorn command (if uvicorn is in your PATH):
 ```bash
 uvicorn app:app --reload
 ```
@@ -91,3 +96,4 @@ Visit [http://localhost:8000/docs](http://localhost:8000/docs) for Swagger UI do
 
 ## Notes
 - All endpoints expect JSON payloads.
+- Validation errors return HTTP 422 with a clear error message about missing or invalid fields.

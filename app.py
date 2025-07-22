@@ -10,12 +10,11 @@ app = FastAPI()
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     errors = []
     for error in exc.errors():
-        field = error['loc'][-1]  # error['loc'] is a tuple so error['loc'][-1] is the field name
         if error['type'] == 'missing':
+            field = error['loc'][-1]
             errors.append(f"Field '{field}' is required")
-        else:
-            errors.append(f"Field '{field}' is invalid")
-    
+    if not errors:
+        errors.append("Invalid request payload please check request body")
     return JSONResponse(
         status_code=422,
         content={"detail": errors}
